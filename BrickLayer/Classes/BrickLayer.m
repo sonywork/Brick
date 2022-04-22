@@ -12,10 +12,10 @@
 
 const NSString *pfctlExecutable = @"/sbin/pfctl";
 const NSString *launchctlExecutable = @"/bin/launchctl";
-const NSString *launchdLabel = @"com.funkensturm.Brick";
-const NSString *launchDaemonPlistPath = @"/Library/LaunchDaemons/com.funkensturm.Brick.plist";
+const NSString *launchdLabel = @"work.sony.ios.Brick";
+const NSString *launchDaemonPlistPath = @"/Library/LaunchDaemons/work.sony.ios.Brick.plist";
 const NSString *PFAnchorName = @"com.apple/249.Brick";
-const NSString *PFAnchorPath = @"/etc/pf.anchors/com.funkensturm.Brick";
+const NSString *PFAnchorPath = @"/etc/pf.anchors/work.sony.ios.Brick";
 
 @implementation BrickLayer
 

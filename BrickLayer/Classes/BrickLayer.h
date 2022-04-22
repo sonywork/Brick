@@ -1,4 +1,4 @@
-#define kBrickLayerIdentifier @"com.funkensturm.BrickLayer"
+#define kBrickLayerIdentifier @"work.sony.ios.BrickLayer"
 
 @protocol BrickLayerProtocol
 

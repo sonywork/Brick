@@ -11,7 +11,7 @@ const NSString *RuleCommentSuffix = @"comment";
 const NSString *RuleRulesSuffix = @"rules";
 
 // Duplicated in BrickLayer
-const NSString *PFAnchorPath = @"/etc/pf.anchors/com.funkensturm.Brick";
+const NSString *PFAnchorPath = @"/etc/pf.anchors/work.sony.ios.Brick";
 
 @implementation BrickRules
 

@@ -60,7 +60,7 @@
 }
 
 - (void) getHelp:(NSMenuItem*)sender {
-  NSString *description = [NSString stringWithFormat:@"For now, I refer to https://github.com/halo/Brick\n\nYou are currently running version %@ \n\nYour preferences are stored in %@\n\nYou can find the default preferences in %@\n\nOnce activated, the pf anchor is located at %@\n\nWhen remember on reboot is activated, the launchDaemon is located at %@", [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey], [BrickPreferences preferencesFilePath], [BrickPreferences defaultsFilePath], [BrickRules anchorFilePath], [BrickPreferences launchDaemonFilePath]];
+  NSString *description = [NSString stringWithFormat:@"You are currently running version %@ \n\nYour preferences are stored in %@\n\nYou can find the default preferences in %@\n\nOnce activated, the pf anchor is located at %@\n\nWhen remember on reboot is activated, the launchDaemon is located at %@", [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey], [BrickPreferences preferencesFilePath], [BrickPreferences defaultsFilePath], [BrickRules anchorFilePath], [BrickPreferences launchDaemonFilePath]];
   NSAlert *alert = [NSAlert alertWithMessageText:@"Help!" defaultButton:@"Thanks" alternateButton:nil otherButton:nil informativeTextWithFormat:@"%@", description];
   [alert runModal];
 }
@@ -179,9 +179,9 @@
 - (NSImage*) statusMenuIcon {
   NSImage *icon;
   if ([BrickRules activated]) {
-    icon = [NSImage imageNamed:@"MenuIconSatelliteOff"];
-  } else {
     icon = [NSImage imageNamed:@"MenuIconSatelliteOn"];
+  } else {
+    icon = [NSImage imageNamed:@"MenuIconSatelliteOff"];
   }
   // Allows the correct highlighting of the icon when the menu is clicked.
   [icon setTemplate:YES];

@@ -2,84 +2,168 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>debug</key>
-	<false/>
-	<key>rules.factory</key>
-	<array>
-		<string>loopback</string>
-		<string>blockout</string>
-		<string>rfc1918</string>
-		<string>dns</string>
-		<string>dhcp</string>
-		<string>l2tpipsec</string>
-		<string>vpn</string>
-	</array>
-	<key>rules.user</key>
-	<array>
-	</array>
-	<key>rule.blockout.activated</key>
-	<true/>
-	<key>rule.blockout.comment</key>
-	<string>Block everything leaving our Mac.</string>
-	<key>rule.blockout.rules</key>
-	<array>
-		<string>block out all log</string>
-	</array>
-	<key>rule.rfc1918.name</key>
-	<string>LAN</string>
-	<key>rule.rfc1918.comment</key>
-	<string>Outgoing traffic destined for the local area network.</string>
-	<key>rule.rfc1918.rules</key>
-	<array>
-		<string>table &lt;BrickRFC1918&gt; const { 192.168.0.0/16 172.16.0.0/12 10.0.0.0/8 }</string>
-		<string>pass out on { en0 en1 en2 en3 en4 } to &lt;BrickRFC1918&gt;</string>
-	</array>
-	<key>rule.loopback.activated</key>
-	<string>YES</string>
-	<key>rule.loopback.name</key>
-	<string>Localhost</string>
-	<key>rule.loopback.comment</key>
-	<string>Outgoing traffic destined for this very computer.</string>
-	<key>rule.loopback.rules</key>
-	<array>
-		<string>set skip on lo0</string>
-	</array>
-	<key>rule.dns.name</key>
-	<string>DNS</string>
-	<key>rule.dns.comment</key>
-	<string>Outgoing DNS requests, probably needed to resolve your remote VPN server</string>
-	<key>rule.dns.rules</key>
-	<array>
-		<string>pass out on { en0 en1 en2 en3 en4 } proto { udp tcp } from any to any port domain</string>
-	</array>
-	<key>rule.dhcp.name</key>
-	<string>DHCP</string>
-	<key>rule.dhcp.comment</key>
-	<string>Outgoing DHCP requests, useful if you have a USB stick modem.</string>
-	<key>rule.dhcp.rules</key>
-	<array>
-		<string>pass out on { en0 en1 en2 en3 en4 } proto { udp tcp } from any port bootpc to any port bootps</string>
-	</array>
-	<key>rule.l2tpipsec.activated</key>
-	<true/>
-	<key>rule.l2tpipsec.name</key>
-	<string>L2TP/IPSec</string>
-	<key>rule.l2tpipsec.comment</key>
-	<string>Establishment of L2TP over IPSec and Cisco IPSec tunnels</string>
-	<key>rule.l2tpipsec.rules</key>
-	<array>
-		<string>pass out on { en0 en1 en2 en3 en4 } proto udp from any to any port { isakmp l2f ipsec-msft }</string>
-		<string>pass out on { en0 en1 en2 en3 en4 } proto esp from any to any</string>
-	</array>
-	<key>rule.vpn.activated</key>
-	<true/>
-	<key>rule.vpn.name</key>
-	<string>VPN</string>
-	<key>rule.vpn.comment</key>
-	<string>Outgoing traffic through VPN tunnels</string>
-	<key>rule.vpn.rules</key>
-	<array>
-		<string>pass out on { tun0 ppp0 utun0 ipsec0 } all</string>
-	</array>
+    <key>debug</key>
+    <false/>
+    <key>rules.factory</key>
+    <array>
+        <string>Init</string>
+        <string>InternetSharing</string>
+        <string>ProxyInChina3</string>
+        <string>ProxyInChina4</string>
+        <string>ProxyInChina</string>
+        <string>ProxyInChina2</string>
+        <string>ProxyInChina5</string>
+        <string>ProxyInChina6</string>
+        <string>ProxyInChina7</string>
+        <string>ProxyInChina8</string>
+        <string>Blockout</string>
+    </array>
+    <key>rules.user</key>
+    <array>
+        <string>tox</string>
+    </array>
+    <key>rule.Init.activated</key>
+    <true/>
+    <key>rule.Init.comment</key>
+    <string>Init for proxy.</string>
+    <key>rule.Init.rules</key>
+    <array>
+        <string>martians = "{!0/8,!10/8,!100.64/10,!127/8,!169.254/16,!172.16/12,192/24,!192.0.2/24,!192.168/16,!198.18/15,!198.51.100/24,!203.0.113/24,!224/4,240/4,!255.255.255.255/32}"</string>
+        <string>sshosts = "{!223.223.218.162/32,!223.223.218.131/32,!123.176.96.174/32,!123.176.102.164/32,!203.86.237.250/32,!123.176.102.54/32,!123.176.102.73/32,!203.86.237.216/32,!123.176.102.53/32}" </string>
+        <string>tcpdns = "{8.8.8.8,8.8.4.4}"</string>
+        <string>table &lt;gfwlist&gt; persist $tcpdns file "/etc/gfwiplist"</string>
+        <string>table &lt;notmartianslist&gt; const {0/0 $martians}</string>
+    </array>
+    
+    <key>rule.Blockout.name</key>
+    <string>Block Out</string>
+    <key>rule.Blockout.comment</key>
+    <string>Block everything leaving our Mac.</string>
+    <key>rule.Blockout.rules</key>
+    <array>
+        <string>block out all</string>
+    </array>
+
+    <key>rule.ProxyInChina.activated</key>
+    <false/>
+    <key>rule.ProxyInChina.name</key>
+    <string>Proxy In China By IpSet With Wifi</string>
+    <key>rule.ProxyInChina.comment</key>
+    <string>Outgoing GFW traffic by shadowsocks server.</string>
+    <key>rule.ProxyInChina.rules</key>
+    <array>
+        <string>rdr pass log on lo0 inet proto tcp to &lt;notmartianslist&gt; -&gt; 127.0.0.1 port 2081</string>
+        <string>rdr pass log on en0 inet proto tcp from en0:network to &lt;gfwlist&gt; -&gt; 127.0.0.1 port 2081</string>
+        <string>pass out on en0 route-to lo0 inet proto tcp from en0 to &lt;gfwlist&gt;</string>
+    </array>
+    
+    <key>rule.ProxyInChina2.activated</key>
+    <false/>
+    <key>rule.ProxyInChina2.name</key>
+    <string>Proxy In China By Ips With Wifi</string>
+    <key>rule.ProxyInChina2.comment</key>
+    <string>Outgoing not china Lan traffic by shadowsocks server.</string>
+    <key>rule.ProxyInChina2.rules</key>
+    <array>
+        <string>table &lt;notchinaiplist&gt; persist {0/0 $martians $sshosts} file "/etc/chinaiplist"</string>
+        <string>rdr pass log on lo0 inet proto tcp to &lt;notmartianslist&gt; -&gt; 127.0.0.1 port 2081</string>
+        <string>rdr pass log on en0 inet proto tcp from en0:network to &lt;notchinaiplist&gt; -&gt; 127.0.0.1 port 2081</string>
+        <string>pass out on en0 route-to lo0 inet proto tcp from en0 to &lt;notchinaiplist&gt;</string>
+    </array>
+    
+    <key>rule.ProxyInChina3.activated</key>
+    <false/>
+    <key>rule.ProxyInChina3.name</key>
+    <string>Proxy In China By IpSet</string>
+    <key>rule.ProxyInChina3.comment</key>
+    <string>Outgoing GFW traffic by shadowsocks server.</string>
+    <key>rule.ProxyInChina3.rules</key>
+    <array>
+        <string>rdr pass log on lo0 inet proto tcp to &lt;notmartianslist&gt; -&gt; 127.0.0.1 port 2081</string>
+        <string>rdr pass log on en8 inet proto tcp from en8:network to &lt;gfwlist&gt; -&gt; 127.0.0.1 port 2081</string>
+        <string>pass out on en8 route-to lo0 inet proto tcp from en8 to &lt;gfwlist&gt;</string>
+    </array>
+    
+    <key>rule.ProxyInChina4.activated</key>
+    <false/>
+    <key>rule.ProxyInChina4.name</key>
+    <string>Proxy In China By Ips</string>
+    <key>rule.ProxyInChina4.comment</key>
+    <string>Outgoing not china Lan traffic by shadowsocks server.</string>
+    <key>rule.ProxyInChina4.rules</key>
+    <array>
+        <string>table &lt;notchinaiplist&gt; persist {0/0 $martians $sshosts} file "/etc/chinaiplist"</string>
+        <string>rdr pass log on lo0 inet proto tcp to &lt;notmartianslist&gt; -&gt; 127.0.0.1 port 2081</string>
+        <string>rdr pass log on en8 inet proto tcp from en8:network to &lt;notchinaiplist&gt; -&gt; 127.0.0.1 port 2081</string>
+        <string>pass out on en8 route-to lo0 inet proto tcp from en8 to &lt;notchinaiplist&gt;</string>
+    </array>
+  
+    <key>rule.ProxyInChina5.activated</key>
+    <false/>
+    <key>rule.ProxyInChina5.name</key>
+    <string>Proxy In China By IpSet With iPhone</string>
+    <key>rule.ProxyInChina5.comment</key>
+    <string>Outgoing GFW traffic by shadowsocks server.</string>
+    <key>rule.ProxyInChina5.rules</key>
+    <array>
+      <string>rdr pass log on lo0 inet proto tcp to &lt;notmartianslist&gt; -&gt; 127.0.0.1 port 2081</string>
+      <string>rdr pass log on en9 inet proto tcp from en9:network to &lt;gfwlist&gt; -&gt; 127.0.0.1 port 2081</string>
+      <string>pass out on en9 route-to lo0 inet proto tcp from en9 to &lt;gfwlist&gt;</string>
+    </array>
+
+    <key>rule.ProxyInChina6.activated</key>
+    <false/>
+    <key>rule.ProxyInChina6.name</key>
+    <string>Proxy In China By Ips With iPhone</string>
+    <key>rule.ProxyInChina6.comment</key>
+    <string>Outgoing not china Lan traffic by shadowsocks server.</string>
+    <key>rule.ProxyInChina6.rules</key>
+    <array>
+      <string>table &lt;notchinaiplist&gt; persist {0/0 $martians $sshosts} file "/etc/chinaiplist"</string>
+      <string>rdr pass log on lo0 inet proto tcp to &lt;notmartianslist&gt; -&gt; 127.0.0.1 port 2081</string>
+      <string>rdr pass log on en9 inet proto tcp from en9:network to &lt;notchinaiplist&gt; -&gt; 127.0.0.1 port 2081</string>
+      <string>pass out on en9 route-to lo0 inet proto tcp from en9 to &lt;notchinaiplist&gt;</string>
+    </array>
+
+    
+    <key>rule.ProxyInChina7.activated</key>
+    <false/>
+    <key>rule.ProxyInChina7.name</key>
+    <string>Proxy In China By IpSet With iPad</string>
+    <key>rule.ProxyInChina7.comment</key>
+    <string>Outgoing GFW traffic by shadowsocks server.</string>
+    <key>rule.ProxyInChina7.rules</key>
+    <array>
+      <string>rdr pass log on lo0 inet proto tcp to &lt;notmartianslist&gt; -&gt; 127.0.0.1 port 2081</string>
+      <string>rdr pass log on en7 inet proto tcp from en7:network to &lt;gfwlist&gt; -&gt; 127.0.0.1 port 2081</string>
+      <string>pass out on en7 route-to lo0 inet proto tcp from en7 to &lt;gfwlist&gt;</string>
+    </array>
+
+    <key>rule.ProxyInChina8.activated</key>
+    <false/>
+    <key>rule.ProxyInChina8.name</key>
+    <string>Proxy In China By Ips With iPad</string>
+    <key>rule.ProxyInChina8.comment</key>
+    <string>Outgoing not china Lan traffic by shadowsocks server.</string>
+    <key>rule.ProxyInChina8.rules</key>
+    <array>
+      <string>table &lt;notchinaiplist&gt; persist {0/0 $martians $sshosts} file "/etc/chinaiplist"</string>
+      <string>rdr pass log on lo0 inet proto tcp to &lt;notmartianslist&gt; -&gt; 127.0.0.1 port 2081</string>
+      <string>rdr pass log on en7 inet proto tcp from en7:network to &lt;notchinaiplist&gt; -&gt; 127.0.0.1 port 2081</string>
+      <string>pass out on en7 route-to lo0 inet proto tcp from en7 to &lt;notchinaiplist&gt;</string>
+    </array>
+    
+    
+    <key>rule.InternetSharing.activated</key>
+    <false/>
+    <key>rule.InternetSharing.name</key>
+    <string>Internet Sharing</string>
+    <key>rule.InternetSharing.comment</key>
+    <string>Turn on network sharing</string>
+    <key>rule.InternetSharing.rules</key>
+    <array>
+        <string>nat-anchor "com.apple.internet-sharing" all</string>
+        <string>rdr-anchor "com.apple.internet-sharing" all</string>
+    </array>
 </dict>
 </plist>

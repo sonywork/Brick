@@ -3,7 +3,7 @@
 const NSString *DebugFlag = @"debug";
 
 // Duplicated in BrickLayer
-const NSString *launchDaemonPlistPath = @"/Library/LaunchDaemons/com.funkensturm.Brick.plist";
+const NSString *launchDaemonPlistPath = @"/Library/LaunchDaemons/work.sony.ios.Brick.plist";
 
 @implementation BrickPreferences
 

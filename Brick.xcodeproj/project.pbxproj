@@ -11,7 +11,7 @@
 		AC0D68E314E69B2F006DC48D /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC0D68E214E69B2F006DC48D /* ServiceManagement.framework */; };
 		AC1434FA14E698EF00406CEF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC1434F914E698EF00406CEF /* Cocoa.framework */; };
 		AC95706414E6A0B600607575 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC95706314E6A0B600607575 /* Foundation.framework */; };
-		AC95707A14E6AD1700607575 /* com.funkensturm.BrickLayer in CopyFiles */ = {isa = PBXBuildFile; fileRef = AC95706114E6A0B600607575 /* com.funkensturm.BrickLayer */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		AC95707A14E6AD1700607575 /* work.sony.ios.BrickLayer in CopyFiles */ = {isa = PBXBuildFile; fileRef = AC95706114E6A0B600607575 /* work.sony.ios.BrickLayer */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		C23F53AF1A7BE14200F32E2A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2CA14981A74F769006746DD /* SystemConfiguration.framework */; };
 		C23F53B01A7BE14500F32E2A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2CA14961A74F717006746DD /* CFNetwork.framework */; };
 		C242560E1A743D3C00CE573A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C242560C1A743D3C00CE573A /* main.m */; };
@@ -55,11 +55,11 @@
 		};
 		AC95707914E6AD0000607575 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = Contents/Library/LaunchServices;
 			dstSubfolderSpec = 1;
 			files = (
-				AC95707A14E6AD1700607575 /* com.funkensturm.BrickLayer in CopyFiles */,
+				AC95707A14E6AD1700607575 /* work.sony.ios.BrickLayer in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,7 +70,7 @@
 		AC0D68E214E69B2F006DC48D /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		AC1434F514E698EF00406CEF /* Brick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brick.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC1434F914E698EF00406CEF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		AC95706114E6A0B600607575 /* com.funkensturm.BrickLayer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = com.funkensturm.BrickLayer; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC95706114E6A0B600607575 /* work.sony.ios.BrickLayer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = work.sony.ios.BrickLayer; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC95706314E6A0B600607575 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C242560A1A743D3C00CE573A /* Brick-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Brick-Info.plist"; path = "Brick/Brick-Info.plist"; sourceTree = SOURCE_ROOT; };
 		C242560B1A743D3C00CE573A /* Brick-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Brick-Prefix.pch"; path = "Brick/Brick-Prefix.pch"; sourceTree = SOURCE_ROOT; };
@@ -144,7 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				AC1434F514E698EF00406CEF /* Brick.app */,
-				AC95706114E6A0B600607575 /* com.funkensturm.BrickLayer */,
+				AC95706114E6A0B600607575 /* work.sony.ios.BrickLayer */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -320,7 +320,7 @@
 			);
 			name = BrickLayer;
 			productName = BrickLayer;
-			productReference = AC95706114E6A0B600607575 /* com.funkensturm.BrickLayer */;
+			productReference = AC95706114E6A0B600607575 /* work.sony.ios.BrickLayer */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -332,12 +332,23 @@
 				LastTestingUpgradeCheck = 0610;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = xdissent.com;
+				TargetAttributes = {
+					AC1434F414E698EF00406CEF = {
+						DevelopmentTeam = 224J4Y8SV6;
+						ProvisioningStyle = Automatic;
+					};
+					AC95706014E6A0B600607575 = {
+						DevelopmentTeam = 224J4Y8SV6;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = AC1434EF14E698EE00406CEF /* Build configuration list for PBXProject "Brick" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = AC1434EA14E698EE00406CEF;
@@ -457,7 +468,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
+				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -481,15 +492,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = halo;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 0.1.3;
+				DEVELOPMENT_TEAM = 224J4Y8SV6;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Brick/Brick-Prefix.pch";
 				INFOPLIST_FILE = "Brick/Brick-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.funkensturm.Brick;
+				MARKETING_VERSION = 1.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = work.sony.ios.Brick;
 				PRODUCT_NAME = Brick;
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Brick/Vendor/CocoaLumberjack/Brick-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
@@ -501,15 +517,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = halo;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 0.1.3;
+				DEVELOPMENT_TEAM = 224J4Y8SV6;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Brick/Brick-Prefix.pch";
 				INFOPLIST_FILE = "Brick/Brick-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.funkensturm.Brick;
+				MARKETING_VERSION = 1.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = work.sony.ios.Brick;
 				PRODUCT_NAME = Brick;
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Brick/Vendor/CocoaLumberjack/Brick-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
@@ -518,7 +539,9 @@
 		AC95706C14E6A0B600607575 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = halo;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 224J4Y8SV6;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BrickLayer/BrickLayer-Prefix.pch";
 				OTHER_LDFLAGS = (
@@ -531,15 +554,19 @@
 					__launchd_plist,
 					"BrickLayer/BrickLayer-Launchd.plist",
 				);
-				PRODUCT_NAME = com.funkensturm.BrickLayer;
+				PRODUCT_BUNDLE_IDENTIFIER = work.sony.ios.BrickLayer;
+				PRODUCT_NAME = work.sony.ios.BrickLayer;
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
 		AC95706D14E6A0B600607575 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = halo;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 224J4Y8SV6;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BrickLayer/BrickLayer-Prefix.pch";
 				OTHER_LDFLAGS = (
@@ -552,8 +579,10 @@
 					__launchd_plist,
 					"BrickLayer/BrickLayer-Launchd.plist",
 				);
-				PRODUCT_NAME = com.funkensturm.BrickLayer;
+				PRODUCT_BUNDLE_IDENTIFIER = work.sony.ios.BrickLayer;
+				PRODUCT_NAME = work.sony.ios.BrickLayer;
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
